@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Discord Message</title>
+</head>
+  <body>
+    <div class="container">
+      <div class="jumbotron" style="margin-top: 15px;">
+        <h1 class="display-4">Bienvenue</h1>
+        <p class="lead">Voici un simple moyen d'envoyer des messages sur Discord depuis une page web centrale</p>
+        <hr class="my-4">
+        <p>Cela vous permettra d'envoyer sur plusieurs plateformes différentes le même message en un seul clic ! Elle est pas belle la vie ?</p>
+      </div>
+
+      <div class="form-group">
+          <label>Webhook URL</label>
+          <input type="password" class="form-control" id="url" placeholder="https://discordapp.com/api/webhooks/...">
+        </div>
+      <nav>
+        <div class="nav nav-tabs" id="nav-tab" role="tablist" >
+          <a class="nav-item nav-link active" id="nav-message-tab" data-toggle="tab" href="#nav-message" role="tab" aria-controls="nav-message" aria-selected="true" >Message</a>
+          <a class="nav-item nav-link" id="nav-embed-tab" data-toggle="tab" href="#nav-embed" role="tab" aria-controls="nav-embed" aria-selected="false">Embed</a>
+        </div>
+      </nav>
+      <div class="tab-content" id="nav-tabContent">
+        <div class="tab-pane fade show active" id="nav-message" role="tabpanel" aria-labelledby="nav-message-tab">  
+          <div class="form-group">
+            <label>Username</label>
+            <input type="text" class="form-control" id="type" placeholder="Par défaut">
+          </div>
+
+          <div class="form-group">
+            <label>Titre</label>
+            <input type="text" class="form-control" id="titre" placeholder="Titre">
+          </div>
+
+          <div class="form-group">
+            <label>Message à envoyer</label>
+            <textarea class="form-control" id="message" rows="3" placeholder="Message"></textarea>
+          </div>
+
+          <button type="submit" onclick="sendMessage(
+          document.getElementById('url').value,
+          document.getElementById('type').value,
+          document.getElementById('titre').value,
+          document.getElementById('message').value,
+          )" class="btn btn-primary mb-2">Valider</button>
+        </div>
+        
+        <div class="tab-pane fade" id="nav-embed" role="tabpanel" aria-labelledby="nav-embed-tab">
+          
+          couleur
+          titre
+          url
+          auteur
+          description
+          Thumbnail
+          Image
+          footer
+
+        </div>
+      </div>
+      <br>
+      <br>
+      <iframe src="https://discordapp.com/widget?id=642731347663912976&theme=dark" width="350" height="500" allowtransparency="true" frameborder="0"></iframe>
+    </div>
+  </body>
+
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+  <script>
+    function sendMessage(url, type, titre, message) {
+      var request = new XMLHttpRequest();
+      request.open("POST", url);
+
+      request.setRequestHeader('Content-type', 'application/json');
+
+      var params = {
+        username:`${type}`,
+        avatar_url: "",
+        content: `${titre} \n ${message}`
+      }
+
+      request.send(JSON.stringify(params));
+    }
+  </script>
+</html>
