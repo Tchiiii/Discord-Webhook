@@ -17,7 +17,7 @@
 
       <div class="form-group">
           <label>Webhook URL</label>
-          <input type="password" class="form-control" id="url" placeholder="https://discordapp.com/api/webhooks/...">
+          <input type="password" class="form-control" id="url" placeholder="https://discordapp.com/api/webhooks/..." value="">
         </div>
         <div class="tab-pane fade show active" id="nav-message" role="tabpanel" aria-labelledby="nav-message-tab">  
           <div class="form-group">
@@ -26,8 +26,8 @@
           </div>
 
           <div class="form-group">
-            <label>Titre</label>
-            <input type="text" class="form-control" id="titre" placeholder="Titre">
+          	<label>Image Profil URL</label>
+          	<input type="text" class="form-control" id="avatar_url" placeholder="url">
           </div>
 
           <div class="form-group">
@@ -38,8 +38,8 @@
           <button type="submit" onclick="sendMessage(
           document.getElementById('url').value,
           document.getElementById('type').value,
-          document.getElementById('titre').value,
           document.getElementById('message').value,
+          document.getElementById('avatar_url').value
           )" class="btn btn-primary mb-2">Valider</button>
       </div>
     </div>
@@ -50,7 +50,7 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 
   <script>
-    function sendMessage(url, type, titre, message) {
+    function sendMessage(url, type, message, avatar) {
       var request = new XMLHttpRequest();
       request.open("POST", url);
 
@@ -58,8 +58,8 @@
 
       var params = {
         username:`${type}`,
-        avatar_url: "",
-        content: `${titre} \n ${message}`
+        avatar_url: `${avatar}`,
+        content: `${message}`
       }
 
       request.send(JSON.stringify(params));
