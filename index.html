@@ -4,7 +4,7 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Discord Message</title>
+  <title>Discord Webhook</title>
 </head>
   <body>
     <div class="container">
@@ -19,16 +19,9 @@
           <label>Webhook URL</label>
           <input type="password" class="form-control" id="url" placeholder="https://discordapp.com/api/webhooks/...">
         </div>
-      <nav>
-        <div class="nav nav-tabs" id="nav-tab" role="tablist" >
-          <a class="nav-item nav-link active" id="nav-message-tab" data-toggle="tab" href="#nav-message" role="tab" aria-controls="nav-message" aria-selected="true" >Message</a>
-          <a class="nav-item nav-link" id="nav-embed-tab" data-toggle="tab" href="#nav-embed" role="tab" aria-controls="nav-embed" aria-selected="false">Embed</a>
-        </div>
-      </nav>
-      <div class="tab-content" id="nav-tabContent">
         <div class="tab-pane fade show active" id="nav-message" role="tabpanel" aria-labelledby="nav-message-tab">  
           <div class="form-group">
-            <label>Username</label>
+            <label>Pseudonyme</label>
             <input type="text" class="form-control" id="type" placeholder="Par défaut">
           </div>
 
@@ -48,24 +41,7 @@
           document.getElementById('titre').value,
           document.getElementById('message').value,
           )" class="btn btn-primary mb-2">Valider</button>
-        </div>
-        
-        <div class="tab-pane fade" id="nav-embed" role="tabpanel" aria-labelledby="nav-embed-tab">
-          
-          couleur
-          titre
-          url
-          auteur
-          description
-          Thumbnail
-          Image
-          footer
-
-        </div>
       </div>
-      <br>
-      <br>
-      <iframe src="https://discordapp.com/widget?id=642731347663912976&theme=dark" width="350" height="500" allowtransparency="true" frameborder="0"></iframe>
     </div>
   </body>
 
