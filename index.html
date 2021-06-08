@@ -22,7 +22,7 @@
         <div class="tab-pane fade show active" id="nav-message" role="tabpanel" aria-labelledby="nav-message-tab">  
           <div class="form-group">
             <label>Name</label>
-            <input type="text" class="form-control" id="type" placeholder="...">
+            <input type="text" class="form-control" id="name" placeholder="...">
           </div>
 
           <div class="form-group">
@@ -35,12 +35,7 @@
             <textarea class="form-control" id="message" rows="3" placeholder="Message"></textarea>
           </div>
 
-          <button type="submit" onclick="sendMessage(
-          document.getElementById('url').value,
-          document.getElementById('type').value,
-          document.getElementById('message').value,
-          document.getElementById('avatar_url').value
-          )" class="btn btn-primary mb-2">Send</button>
+          <button type="submit" onclick="sendMessage()" class="btn btn-primary mb-2">Send</button>
       </div>
     </div>
   </body>
@@ -51,13 +46,17 @@
 
   <script>
     function sendMessage(url, type, message, avatar) {
+      
+      let url = document.getElementById('url').value;
+      let name = document.getElementById('name').value;
+      let message = document.getElementById('message').value;
+      let avatar = document.getElementById('avatar_url').value;
+      
       var request = new XMLHttpRequest();
       request.open("POST", url);
-
       request.setRequestHeader('Content-type', 'application/json');
-
       var params = {
-        username:`${type}`,
+        username:`${name}`,
         avatar_url: `${avatar}`,
         content: `${message}`
       }
